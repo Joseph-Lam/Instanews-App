@@ -1,0 +1,283 @@
+/*instanews stylesheet*/
+
+//fonts from font-squirrel//
+@font-face {
+    font-family: 'open_sans';
+    src: url('assets/fs-fonts/opensans-bold-webfont.eot');
+    src: url('assets/fs-fonts/opensans-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('assets/fs-fonts/opensans-bold-webfont.woff2') format('woff2'),
+         url('assets/fs-fonts/opensans-bold-webfont.woff') format('woff'),
+         url('assets/fs-fonts/opensans-bold-webfont.ttf') format('truetype'),
+         url('assets/fs-fonts/opensans-bold-webfont.svg#open_sansbold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'open_sans';
+    src: url('assets/fs-fonts/opensans-bolditalic-webfont.eot');
+    src: url('assets/fs-fonts/opensans-bolditalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('assets/fs-fonts/opensans-bolditalic-webfont.woff2') format('woff2'),
+         url('assets/fs-fonts/opensans-bolditalic-webfont.woff') format('woff'),
+         url('assets/fs-fonts/opensans-bolditalic-webfont.ttf') format('truetype'),
+         url('assets/fs-fonts/opensans-bolditalic-webfont.svg#open_sansbold_italic') format('svg');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'open_sans';
+    src: url('assets/fs-fonts/opensans-light-webfont.eot');
+    src: url('assets/fs-fonts/opensans-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('assets/fs-fonts/opensans-light-webfont.woff2') format('woff2'),
+         url('assets/fs-fonts/opensans-light-webfont.woff') format('woff'),
+         url('assets/fs-fonts/opensans-light-webfont.ttf') format('truetype'),
+         url('assets/fs-fonts/opensans-light-webfont.svg#open_sanslight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'open_sans';
+    src: url('assets/fs-fonts/opensans-lightitalic-webfont.eot');
+    src: url('assets/fs-fonts/opensans-lightitalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('assets/fs-fonts/opensans-lightitalic-webfont.woff2') format('woff2'),
+         url('assets/fs-fonts/opensans-lightitalic-webfont.woff') format('woff'),
+         url('assets/fs-fonts/opensans-lightitalic-webfont.ttf') format('truetype'),
+         url('assets/fs-fonts/opensans-lightitalic-webfont.svg#open_sanslight_italic') format('svg');
+    font-weight: normal;
+    font-style: italic;
+}
+
+//MEDIA QUERY WITH SASS
+$desktop-width: 1000px;
+$tablet-width: 600px;
+$mobile-width: 480px;
+
+//color variable declaration
+$white: #ffffff;
+$grey: #c2c2c2;
+
+//media query mixin declaration
+@mixin desktop {
+  @media (min-width: $desktop-width) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: $tablet-width) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (min-width: $mobile-width) {
+    @content;
+  }
+}
+
+//Styling
+//main elements
+
+html {
+  height: 100%;
+  font-family: 'open_sans', sans-serif;
+  font-size: 16px;
+  color: $white;
+}
+
+body {
+ background-color: black;
+ box-sizing: border-box;
+}
+
+
+select {
+  font-size: 30px;
+}
+
+//loader image
+.loader {
+  height: 10vh;
+  width: 10vh;
+}
+
+.ajax-loader {
+  text-align: center;
+}
+
+//.header centers the container before the selector is used
+.header {
+  height: 40vh;
+  margin-top: 30vh;
+}
+
+//.logo-margin is added after a category is selected and
+// adjusts the header to go to the top and shrink in size
+.logo-margin {
+  margin: 1vh;
+
+  @include tablet {
+    display: flex;
+    padding-left: 80px;
+    height: auto;
+  }
+
+  @include desktop {
+    display: flex;
+    flex-direction: flex-start;
+    padding: 0px;
+  }
+}
+
+//New York Times Letter with size adjusting using media queries
+.letter {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 2vh;
+
+  @include tablet {
+    max-width: 20%;
+  }
+  @include desktop {
+    max-width: 20%;
+  }
+}
+
+
+// .letter-size gets added once a category is selected. 
+// edits the size of the letter.
+.letter-size {
+  max-width: 200px;
+
+    @include tablet {
+    max-width: 80px;
+    }
+    @include desktop {
+   max-width: 80px;
+    }
+}
+
+
+//CONTAINER (Letter, text div, and selector container)
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include tablet {
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  @include desktop {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  .options {   // .option contains the p and selector box
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 250%;
+
+    @include tablet {
+    align-items: flex-start;
+    }
+
+  }
+
+  .selector { //selector container
+    margin-bottom: 10px;
+  }
+}
+
+
+//ARTICLE 
+
+//edits font and spacing in the abstract article
+.caption-font{
+  font-family: "open_sans", sans-serif;
+  text-decoration: none;
+  color: $white;
+  line-height: 150%;
+}
+
+//edit sizing for the article background image
+.article {
+  display: flex;
+  height: 50vh;
+  background-size: cover;
+  background-position: 50%;
+}
+
+//edits the abstract writing and its background
+//includes hiding abstract and showing p when hovered over any part of the 
+//article box
+.abstract {
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+      p {
+      box-sizing: border-box;
+      transform: translateY(100%);
+      background: rgba(0,0,0,0.5);
+    }
+    &:hover { 
+      p {
+        transform: translateY(0%);
+      }
+    }
+
+}
+
+//edit sizing and number of articles for each article section
+//1 article per row for mobile, 2 for tablet, 4 for desktop 
+.article-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+    @include tablet {
+        li {
+        max-width: 50%;
+      }
+    }
+    @include desktop {
+      li {
+        max-width: 25%;
+      }
+    }
+}
+
+
+//FOOTER
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 10vh;
+  margin: 20px;
+  
+  @include tablet {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+
+  @include desktop {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+}
+
+.footer-font {
+  color: #c2c2c2;
+}
+
+
