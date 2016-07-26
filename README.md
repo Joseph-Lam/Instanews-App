@@ -30,7 +30,7 @@ JS
 -learned how to use the splice function to create an array for the 12 stories and running that array into the each() loop
 -a very useful technique was adding classes when using the selector in order to make the page run more smooth and responsive (Header would shift to the top and allow more space to display articles)
 -a loading gif was added once the selector was used and was removed at the end of the script 
--
+
 
 Gulp
 -setting up the gulp file was a difficult learning curve for me but once it was sorted out, it was very useful throughout the entire project. 
