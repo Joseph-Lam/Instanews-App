@@ -33,22 +33,22 @@ $(document).ready(function() {
   }).done(function(data) {
 
     articleData = data.results;
+    nytItems = '';
+    var i = 0;
 
-    nytItems = ''
+    // if (articleData.length  < 1) {
+    //   nytItems += '<p class="feedback">Sorry, nothing found! Please try again.</p>';
+    //   return;
 
-    if (articleData.length  < 1) {
-      nytItems += '<p class="feedback">Sorry, nothing found! Please try again.</p>';
-      return;
-
-    } else {
-      let nytData = data.results.filter(function(value) {
-        return value.multimedia.length;
-      }).splice(0,12)
+    // } else {
+    //   let nytData = data.results.filter(function(value) {
+    //     return value.multimedia.length;
+    //   }).splice(0,12)
 
     // nytItems += '<ul>';
-    $.each(nytData, function(index, value) {
+    $.each(articleData, function(key, value) {
 
-      if (value.multimedia.length > 0) {
+      if (value.multimedia.length && i < 12) { //a simpler way to append only 12 articles - FM
         articleImageUrl = value.multimedia[4].url;
         articleCaption = value.abstract;
         articleLink = value.url;
@@ -64,15 +64,16 @@ $(document).ready(function() {
         nytItems +=     '</div>';
         nytItems +=   '</a>';
         nytItems += '</li>';
+        i++;
       }
     });
-}
+// 
     // nytItems += '</ul>';
 
      $articlelist.append(nytItems);
 
-  }).fail(function(err) {
-    throw err;
+  }).fail(function() {
+    
   })
 
   //remove loader gif
