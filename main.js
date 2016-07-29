@@ -73,7 +73,7 @@ $(document).ready(function() {
      $articlelist.append(nytItems);
 
   }).fail(function() {
-    
+    $articlelist.append('<li class="feedback">Sorry, nothing found! Please try again.</li>');
   })
 
   //remove loader gif
