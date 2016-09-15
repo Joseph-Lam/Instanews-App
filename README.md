@@ -1,4 +1,4 @@
-###About:
+##About:
 
 This website filters the top news stories from the New York Times API. The goal was to pull the article caption and image and URL link and put the first 12 articles onto the web page using ajax in JS. 
 
